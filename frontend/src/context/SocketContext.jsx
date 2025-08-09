@@ -7,7 +7,10 @@ export const SocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io("https://polling-app-avmq.onrender.com", {
+    const backendUrl =
+      import.meta.env.VITE_BACKEND_URL ||
+      "https://polling-app-avmq.onrender.com";
+    const newSocket = io(backendUrl, {
       extraHeaders: {
         "ngrok-skip-browser-warning": "true",
       },
