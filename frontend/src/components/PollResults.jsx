@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { kickOutStudent } from "../store/pollSlice";
 import { useSocket } from "../hooks/useSocket";
+import { EyeIcon, IntervueHeading } from "./common/Icons";
 
 const PollResults = ({
   poll,
@@ -87,7 +88,7 @@ const PollResults = ({
               onClick={() => onViewHistory && onViewHistory()}
               className="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
             >
-              📊 View Poll History
+            <EyeIcon/>   View Poll History
             </button>
           </div>
         )}
@@ -183,9 +184,7 @@ const PollResults = ({
 
         {user.role === "student" && !showNewQuestionButton && (
           <div className="mt-8 bg-white rounded-lg shadow-lg p-6 text-center">
-            <div className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-purple-100 text-purple-800 mb-4">
-              🔴 Internet Poll
-            </div>
+            <IntervueHeading />
             <h3 className="text-xl font-bold text-gray-900 mb-2">
               Wait for the teacher to ask a new question.
             </h3>

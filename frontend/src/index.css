@@ -70,6 +70,46 @@ body {
 }
 
 /* Radio button styles */
+input[type="radio"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+}
+
+input[type="radio"]:checked {
+  border-color: #8F64E1;
+  background-color: #8F64E1;
+}
+
+input[type="radio"]:checked::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+input[type="radio"]:focus {
+  box-shadow: 0 0 0 3px rgba(143, 100, 225, 0.3);
+  border-color: #8F64E1;
+}
+
+input[type="radio"]:hover {
+  border-color: #8F64E1;
+}
+
 input[type="radio"]:checked + .radio-label {
   background-color: #7c3aed;
   color: white;

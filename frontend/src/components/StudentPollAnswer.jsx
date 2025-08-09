@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { submitAnswer } from "../store/pollSlice";
 import { useSocket } from "../hooks/useSocket";
+import { IntervueHeading } from "./common/Icons";
 
 const StudentPollAnswer = ({ poll, onAnswerSubmitted }) => {
   const [selectedOption, setSelectedOption] = useState(null);
@@ -71,9 +72,7 @@ const StudentPollAnswer = ({ poll, onAnswerSubmitted }) => {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-center">
-          <div className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-purple-100 text-purple-800 mb-4">
-            🔴 Internet Poll
-          </div>
+         <IntervueHeading/>
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600 mx-auto mb-4"></div>
           <h2 className="text-xl font-bold text-gray-900 mb-2">
             Wait for the teacher to ask questions..

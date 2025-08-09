@@ -19,9 +19,10 @@ const PollHistory = ({ onBackToLive }) => {
     <div className="min-h-screen bg-gray-50 p-4">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-center mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">
-            View Poll History
-          </h1>
+         <h1 className="text-4xl mb-2 font-normal">
+         View{" "}
+          <span className="font-semibold">Poll History</span>
+        </h1>
           <button
             onClick={onBackToLive}
             className="text-purple-600 hover:text-purple-700 font-medium"
@@ -40,13 +41,13 @@ const PollHistory = ({ onBackToLive }) => {
             return (
               <div
                 key={poll._id}
-                className="bg-white rounded-lg shadow-lg overflow-hidden"
+                className="rounded-lg shadow-lg overflow-hidden"
               >
-                <div className="bg-gray-800 text-white p-4">
+                Question {pollIndex + 1}
+                <div className="bg-gradient-to-r from-[#343434] to-[#6E6E6E] border-t rounded-t-[10px] text-white p-4">
                   <h3 className="text-lg font-semibold">
-                    Question {pollIndex + 1}
-                  </h3>
                   <p className="text-gray-200 mt-1">{poll.question}</p>
+                  </h3>
                 </div>
 
                 <div className="p-6">
@@ -57,11 +58,19 @@ const PollHistory = ({ onBackToLive }) => {
                         totalVotes
                       );
                       return (
-                        <div key={index} className="space-y-2">
-                          <div className="flex items-center justify-between">
+                        <div key={index} className="relative bg-gray-200 rounded-lg p-4 overflow-hidden">
+                          <div 
+                            className="absolute inset-0 rounded-lg"
+                            style={{ 
+                              width: `${percentage}%`,
+                              backgroundColor: '#6766D5',
+                              opacity: 0.2
+                            }}
+                          ></div>
+                          <div className="relative flex items-center justify-between">
                             <div className="flex items-center gap-3">
-                              <div className="w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-white font-medium">
-                                {String.fromCharCode(65 + index)}
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center text-white font-medium" style={{ backgroundColor: '#6766D5' }}>
+                                {index + 1}
                               </div>
                               <span className="font-medium text-gray-900">
                                 {option.text}
@@ -70,12 +79,6 @@ const PollHistory = ({ onBackToLive }) => {
                             <span className="text-lg font-bold text-gray-900">
                               {percentage}%
                             </span>
-                          </div>
-                          <div className="w-full bg-gray-200 rounded-full h-3">
-                            <div
-                              className="bg-purple-600 h-3 rounded-full"
-                              style={{ width: `${percentage}%` }}
-                            ></div>
                           </div>
                         </div>
                       );

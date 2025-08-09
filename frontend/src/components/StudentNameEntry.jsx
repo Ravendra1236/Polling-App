@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "../store/userSlice";
+import { IntervueHeading } from "./common/Icons";
+import ContinueButton from "./common/ContinueButton";
 
 const StudentNameEntry = ({ onNameSubmit }) => {
   const [name, setName] = useState("");
@@ -16,49 +18,52 @@ const StudentNameEntry = ({ onNameSubmit }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-lg p-8">
+    <div className="min-h-screen flex items-center justify-center p-4 w-full">
+      <div className="max-w-2xl flex flex-col items-center">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center px-3 py-1 rounded-full text-sm bg-purple-100 text-purple-800 mb-4">
-            🔴 Internet Poll
-          </div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">
-            Let's Get Started
+          <IntervueHeading />
+          <h1 className="text-4xl mb-2 font-normal">
+            Let's <span className="font-semibold">Get Started</span>
           </h1>
           <p className="text-gray-600">
             If you're a student, you'll be able to{" "}
-            <span className="font-semibold">submit your answers</span>,
-            participate in live polls, and see how your responses compare with
-            your <span className="font-semibold">classmates</span>
+            <span className="font-semibold text-black">
+              submit your answers
+            </span>
+            , participate in live polls, and see how your responses compare with
+            your classmates
           </p>
         </div>
-
-        <form onSubmit={handleSubmit}>
-          <div className="mb-6">
-            <label
-              htmlFor="name"
-              className="block text-sm font-medium text-gray-700 mb-2"
+        <div className="flex w-full justify-center">
+          <form onSubmit={handleSubmit} className="w-full max-w-md">
+            <div className="mb-6 w-full">
+              <label
+                htmlFor="name"
+                className="block text-sm font-medium mb-2"
+              >
+                Enter your Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="Rahul Bajaj"
+                className="w-full px-3 py-5 border-none outline-none border-gray-300 bg-[#F2F2F2] rounded-none focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                required
+              />
+            </div>
+            <div className="flex justify-center">
+            <ContinueButton
+              onClick={handleSubmit}
+              selectedRole={name.trim() !== ""}
+              className=""
             >
-              Enter your Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Rahul Bajaj"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-purple-700 transition-colors"
-          >
-            Continue
-          </button>
-        </form>
+              Continue
+            </ContinueButton>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
